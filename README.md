@@ -1,6 +1,6 @@
 # Claude Code + DeepSeek 一键部署
 
-🔥 国内用户无需海外信用卡 | 5 分钟搞定 | 费用降低 90%
+🔥 国内用户无需海外信用卡 | **Windows 双击 / Mac 一行命令** | 5 分钟搞定 | 费用降低 90%
 
 不需要 Anthropic 账号，不需要海外支付，一行命令启动 Claude Code。
 
@@ -9,11 +9,20 @@
 ## 快速开始
 
 ### Windows
-右键 `setup_claude_deepseek.bat` → **以管理员身份运行**，按照提示输入你的 DeepSeek API Key 即可。
+右键 `setup_claude_deepseek.bat` → **以管理员身份运行**，跟着提示输入 DeepSeek API Key 即可。
 
-### Mac / Linux
+### Mac
 ```bash
-chmod +x setup.sh && ./setup.sh
+curl -sL https://raw.githubusercontent.com/shusheng-crypto/claude-code-deepseek-setup/main/install.sh | bash
+```
+
+> 上面这行命令复制粘贴到终端回车即可，脚本会自动完成全部配置。
+
+### 就是这么简单
+```
+Windows → 双击 .bat 文件
+Mac     → 粘贴一行命令回车
+之后   → 输入 claude 启动
 ```
 
 ## 这是什么？
