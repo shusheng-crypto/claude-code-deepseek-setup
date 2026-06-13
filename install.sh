@@ -56,12 +56,15 @@ echo "✓ npm 已安装 ($(npm -v))"
 echo "[$(date)] npm $(npm -v)" >> "$LOG"
 echo ""
 
-# 安装 Claude Code
+# 安装 Claude Code（普通安装失败则自动用 sudo）
 echo "正在安装 Claude Code..."
 echo "[$(date)] installing claude code" >> "$LOG"
-if npm install -g @anthropic-ai/claude-code; then
+if npm install -g @anthropic-ai/claude-code 2>/dev/null; then
   echo "✓ Claude Code 安装完成"
   echo "[$(date)] npm install OK" >> "$LOG"
+elif sudo npm install -g @anthropic-ai/claude-code; then
+  echo "✓ Claude Code 安装完成（已用管理员权限）"
+  echo "[$(date)] npm install OK with sudo" >> "$LOG"
 else
   echo "❌ 安装失败，请手动执行： sudo npm install -g @anthropic-ai/claude-code"
   echo "[$(date)] npm install FAILED" >> "$LOG"
