@@ -13,20 +13,11 @@ echo "[$(date)] script started" > "$LOG"
 if ! command -v node >/dev/null 2>&1; then
   echo "未检测到 Node.js，正在自动下载安装..."
   echo "[$(date)] node not found, auto-installing" >> "$LOG"
-
-  ARCH=$(uname -m)
-  if [ "$ARCH" = "arm64" ]; then
-    NODE_PKG="node-v20.18.0.pkg"
-    NODE_URL="https://nodejs.org/dist/v20.18.0/node-v20.18.0.pkg"
-  else
-    NODE_PKG="node-v20.18.0.pkg"
-    NODE_URL="https://nodejs.org/dist/v20.18.0/node-v20.18.0.pkg"
-  fi
-
+  NODE_URL="https://nodejs.org/dist/v20.18.0/node-v20.18.0.pkg"
   echo "正在下载 Node.js 安装包（约 70MB，请稍候）..."
-  if curl -fL "$NODE_URL" -o "/tmp/$NODE_PKG"; then
+  if curl -fL "$NODE_URL" -o "/tmp/node-v20.18.0.pkg"; then
     echo "下载完成，开始安装（需要输入开机密码）..."
-    if sudo installer -pkg "/tmp/$NODE_PKG" -target /; then
+    if sudo installer -pkg "/tmp/node-v20.18.0.pkg" -target /; then
       echo "✓ Node.js 安装完成"
       echo "[$(date)] node installed" >> "$LOG"
       export PATH="/usr/local/bin:$PATH"
